@@ -1,6 +1,52 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'NearbyPlacesApp'
-include ':app'
-includeBuild('../node_modules/@react-native/gradle-plugin')
+////pluginManagement {
+////    includeBuild("../node_modules/@react-native/gradle-plugin")
+////    repositories {
+////        google()
+////        mavenCentral()
+////        gradlePluginPortal()
+////    }
+////}
+////
+////plugins {
+////    id("com.facebook.react.settings")
+////}
+////
+////dependencyResolutionManagement {
+////    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+////    repositories {
+////        google()
+////        mavenCentral()
+////    }
+////}
+////
+////rootProject.name = "NearbyPlacesApp"
+////include(":app")
+//////include(":app" , ":react-native-maps",":react-native-safe-area-context")
+////
+////extensions.configure(com.facebook.react.ReactSettingsExtension) {
+////    autolinkLibrariesWithApp()
+////}
+
+
+pluginManagement {
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id("com.facebook.react.settings")
+    id("com.android.application") version "8.8.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
+}
+
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    ex.autolinkLibrariesFromCommand()
+}
+
+rootProject.name = "NearbyPlacesApp"
+include(":app")
+includeBuild("../node_modules/@react-native/gradle-plugin")

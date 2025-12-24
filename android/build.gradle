@@ -1,20 +1,31 @@
 buildscript {
     ext {
-        buildToolsVersion = "36.0.0"
+        buildToolsVersion = "35.0.0"
         minSdkVersion = 24
-        compileSdkVersion = 36
-        targetSdkVersion = 36
-        ndkVersion = "27.1.12297006"
-        kotlinVersion = "2.1.20"
+        compileSdkVersion = 35
+        targetSdkVersion = 35
+        ndkVersion = "29.0.14206865"
+        kotlinVersion = "2.1.0"
     }
+
     repositories {
         google()
         mavenCentral()
+
+        // 1. Point to the specific internal android folder of the plugin
+        maven {
+            url("C:/Users/Asus/Desktop/ReactNative/NearbyPlacesApp/node_modules/@react-native/gradle-plugin/android")
+        }
+        // 2. Backup path for core React Native
+        maven {
+            url("C:/Users/Asus/Desktop/ReactNative/NearbyPlacesApp/node_modules/react-native/android")
+        }
     }
+
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        classpath("com.android.tools.build:gradle:8.8.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
         classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
     }
 }
 
