@@ -1,8 +1,63 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Nearby Places Map App 📍
+
+A React Native application that leverages **Android Native Modules** and **MVVM Architecture** to fetch and display nearby places on a Google Map.
+
+## 🏗️ Architecture: MVVM (Model-View-ViewModel)
+This project is built with a strict separation of concerns between the React Native UI and Android Native logic:
+
+### 1. Android Native (The Engine)
+- **Model**: Data classes representing place entities.
+- **Repository**: Handles data fetching logic (GPS Location + Places Data).
+- **ViewModel**: Manages business logic and exposes state via LiveData.
+- **Native Module**: Bridges the ViewModel data to the React Native layer.
+
+### 2. React Native (The UI)
+- **Map View**: Renders the map using `react-native-maps`.
+- **Markers**: Dynamically displays places fetched from the Native side.
+- **Permissions**: Handles runtime Android location permissions.
+
+## 📂 Project Structure
+Below is the organization of the MVVM components within the Android source folder:
+
+```text
+root/
+├── android/app/src/main/java/com/nearbyplacesapp/
+│   ├── bridge/           <-- Native Module & Package registration
+│   │   ├── PlacesModule.kt
+│   │   └── PlacesPackage.kt
+│   ├── location/         <-- GPS & Location logic
+│   │   └── LocationProvider.kt
+│   ├── model/            <-- Data Classes (The 'M' in MVVM)
+│   │   └── Place.kt
+│   ├── repository/       <-- Data Fetching logic
+│   │   └── PlacesRepository.kt
+│   └── viewmodel/        <-- Business Logic (The 'VM' in MVVM)
+│       └── PlacesViewModel.kt
+├── src/                  <-- React Native Source
+│   └── screens/
+│       └── MapScreen.tsx <-- UI Layer (The 'V' in MVVM)
+└── App.tsx
+
+### You have to use your own MAP_KEY 
+
+---
+
+## 🚀 Features
+- **Native Location Fetching**: Uses Android APIs for high-accuracy location.
+- **MVVM Design**: Clean, testable, and maintainable native code.
+- **Real-time Map Updates**: Centers the map and places markers based on live GPS data.
+- **Distance Calculation**: Shows the distance from your current position to each marker.
+
+---
+
+## 🛠️ Getting Started
+
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+
+
 
 ## Step 1: Start Metro
 
@@ -95,3 +150,5 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
