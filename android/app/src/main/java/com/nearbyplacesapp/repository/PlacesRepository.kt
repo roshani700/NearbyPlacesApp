@@ -10,7 +10,7 @@ import java.io.IOException
 class PlacesRepository(private val locationProvider: LocationProvider) {
 
     private val client = OkHttpClient()
-    private val apiKey = "AIzaSyB_zjSQ_Pa5KN-iQXWjnHusWxrCLC_Ht9c" // Same as in Manifest
+    private val apiKey = "MAP_KEY" // Same as in Manifest
 
     fun fetchNearbyPlaces(
         onSuccess: (List<Place>) -> Unit,
